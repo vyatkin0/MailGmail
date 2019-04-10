@@ -1,0 +1,88 @@
+<div class="container body-content">
+  <h1>MailGmail</h1>
+
+  <h2>Send a message</h2>
+  <div class="form-group">
+      <label for="clientMsgId">Client message Id</label>
+      <input type="text" class="form-control" id="clientMsgId"
+              required
+              [(ngModel)]="model.clientMsgId" name="clientMsgId">
+  </div>
+
+  <div class="form-group">
+    <label for="from">From</label>
+    <input type="text"  class="form-control" id="from" required
+            [(ngModel)]="model.from" name="from">
+  </div>
+
+  <div class="form-group">
+      <label for="to">To</label>
+      <input type="text"  class="form-control" id="to" required
+              [(ngModel)]="model.to" name="to">
+    </div>
+
+  <div class="form-group">
+    <label for="bodyTemplate">Body template</label>
+    <select class="form-control"  id="bodyTemplate"
+            required
+            [(ngModel)]="model.bodyTemplate" name="bodyTemplate">
+      <option [value]="1">Confirm email</option>
+      <option [value]="2">Reset password</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+      <label for="body">Body model</label>
+      <input type="text"  class="form-control" id="body"
+              [(ngModel)]="bodyModel" name="body">
+    </div>
+
+    <div class="form-group">
+        <label for="subject">Subject model</label>
+        <input type="text"  class="form-control" id="subject"
+                [(ngModel)]="subjectModel" name="subject">
+      </div>
+
+
+  <button type="button" class="btn btn-primary" (click)="send();">Send</button>
+
+  <div class="alert alert-danger" role="alert" [hidden]="!errorMessage">
+      {{errorMessage}}
+  </div>
+
+  <div class="alert alert-success" role="alert" [hidden]="!lastResult">
+      {{lastResult}}
+  </div>
+
+  <hr>
+  <h2>Find messages</h2>
+
+  <div class="form-group">
+      <label for="msgId">Message id</label>
+      <input type="text"  class="form-control" id="msgId"
+              [(ngModel)]="findModel.messageId" name="msgId">
+  </div>
+
+  <div class="form-group">
+      <label for="clientMsgId">Client message Id</label>
+      <input type="text" class="form-control" id="clientMsgId"
+              [(ngModel)]="findModel.clientMsgId" name="clientMsgId">
+  </div>
+
+  <div class="form-group">
+      <label for="status">Status</label>
+      <input type="text"  class="form-control" id="status"
+              [(ngModel)]="findModel.status" name="status">
+  </div>
+
+  <button type="button" class="btn btn-primary" (click)="find();">Find</button>
+
+  <div class="alert alert-danger" role="alert" [hidden]="!errorFindMessage">
+      {{errorFindMessage}}
+  </div>
+
+  <div class="alert alert-success" role="alert" [hidden]="!lastFindResult">
+      {{lastFindResult}}
+  </div>
+
+</div>
