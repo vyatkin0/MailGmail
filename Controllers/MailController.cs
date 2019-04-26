@@ -12,6 +12,7 @@ namespace MailGmail.Controllers
     // Mail controller.
 
     [Route("api/[controller]/[action]")]
+    [ApiController]
     public class MailController : ControllerBase
     {
         private ILogger _logger;
@@ -23,6 +24,7 @@ namespace MailGmail.Controllers
             _ctx = ctx;
         }
 
+        [HttpPost]
         public ActionResult Send([Required] [FromBody] SendMailModel model)
         {
             EmailTemplate template = _ctx.emailTemplates.Where(t => t.Id == model.bodyTemplate).FirstOrDefault();
@@ -58,6 +60,7 @@ namespace MailGmail.Controllers
             return Ok(new EmailStatus { messageId = m.Id, clientMsgId = model.clientMsgId, status = m.resultMessage });
         }
 
+        [HttpPost]
         public ActionResult FindMessages([Required] [FromBody] EmailStatus model)
         {
             IQueryable<EmailMessage> query = _ctx.emailMessages.Include(m => m.template).OrderBy(m => m.createdAt);
