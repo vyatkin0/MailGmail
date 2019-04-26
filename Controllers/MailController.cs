@@ -12,7 +12,7 @@ namespace MailGmail.Controllers
     // Mail controller.
 
     [Route("api/[controller]/[action]")]
-    public class MailController : Controller
+    public class MailController : ControllerBase
     {
         private ILogger _logger;
         private AppDbContext _ctx;
